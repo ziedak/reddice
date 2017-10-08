@@ -1,12 +1,24 @@
 import path from "path";
+import webpack from "webpack";
 
 export default {
-    devtool:'eval-souce-map',
-    entry: path.join(__dirname, '/client/index.js'),
+    devtool: 'eval-souce-map',
+    entry: [
+        'react-hot-loader/patch',
+        'webpack-hot-middleware/client',
+        path.join(__dirname, '/client/index.js'),
+
+    ],
     output: {
-        path:path.join(__dirname, '/dist'),
-        filename: 'bundle.js'
+        path: path.join(__dirname, '/dist'),
+        filename: 'bundle.js',
+        publicPath: '/'
     },
+    plugins: [
+        new webpack. NoEmitOnErrorsPlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.HotModuleReplacementPlugin()
+    ],
     module: {
         loaders: [
             {
@@ -17,6 +29,7 @@ export default {
         ]
     },
     resolve: {
-        extensions: ['*','.js', '.jsx']
+        extensions: ['*', '.js', '.jsx']
+
     }
 }
