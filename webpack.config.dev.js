@@ -2,11 +2,15 @@ import path from "path";
 import webpack from "webpack";
 
 export default {
+    devServer: {
+
+        hot: true
+    },
     devtool: 'eval-souce-map',
     entry: [
         'react-hot-loader/patch',
         'webpack-hot-middleware/client',
-        path.join(__dirname, '/client/index.js'),
+        path.join(__dirname, '/client/index.js')
 
     ],
     output: {
@@ -15,7 +19,7 @@ export default {
         publicPath: '/'
     },
     plugins: [
-        new webpack. NoEmitOnErrorsPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ],
@@ -24,7 +28,7 @@ export default {
             {
                 test: /\.js$/,
                 include: path.join(__dirname, '/client'),
-                loader: ['babel-loader']
+                loader: ['react-hot-loader/webpack','babel-loader']
             }
         ]
     },
