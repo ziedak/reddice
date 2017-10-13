@@ -1,7 +1,11 @@
 {
   "presets": [
     "es2015",
-    "react"
+    "react",
+    "stage-0"
+    //for the arrow functions
+  ],
+  "plugins": [
+    "transform-es2015-arrow-functions"
   ]
-//,   "plugins": [  "react-hot-loader/babel"  ]
 }

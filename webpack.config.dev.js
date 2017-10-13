@@ -23,13 +23,17 @@ export default {
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ],
+
     module: {
         loaders: [
             {
                 test: /\.js$/,
                 include: path.join(__dirname, '/client'),
-                loader: ['react-hot-loader/webpack','babel-loader']
-            }
+                loader: ['react-hot-loader/webpack', 'babel-loader']
+            },
+
+            // Options to configure babel with
+
         ]
     },
     resolve: {
