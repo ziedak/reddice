@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import timezones from "../data/timezones";
-
+import PropTypes from 'prop-types';
 
 class SignupForm extends Component {
 
@@ -11,7 +11,7 @@ class SignupForm extends Component {
             email: "",
             password: "",
             password_confirmation: "",
-            timeZone: ""
+            timezone: ""
         }
     }
 
@@ -21,7 +21,8 @@ class SignupForm extends Component {
     };
     onSubmit = (e) => {
         e.preventDefault();
-        //this.setState({username: e.target.value})
+        //axios.post('api/users', {user: this.state});
+        this.props.userSignupRequest(this.state);
     };
 
     render() {
@@ -30,7 +31,7 @@ class SignupForm extends Component {
             email,
             password,
             password_confirmation,
-            timeZone
+            timezone
         } = this.state;
 
         return (
@@ -97,15 +98,15 @@ class SignupForm extends Component {
                 <div className="form-group">
                     <label >Time Zones</label>
                     <select
-                        name="password_confirmation"
+                        name="timezone"
                         className="form-control"
-                        value={timeZone}
+                        value={timezone}
                         onChange={this.onChange}>
                         <option value="" disabled>Choose your TimeZone</option>
                         {
                             timezones.map((val) => {
                                 return (
-                                    <option key={`${val.offset}_${val.value}`} value=""{val.text}> {val.text}</option>
+                                    <option key={`${val.offset}_${val.value}`} value={val.text}> {val.text}</option>
                                 );
                             })
                         }
@@ -124,5 +125,10 @@ class SignupForm extends Component {
 }
 
 
+SignupForm.propTypes = {
+    userSignupRequest: PropTypes.func.isRequired
+};
 export default SignupForm;
+
+
 
