@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import timezones from "../data/timezones";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import classnames from "classnames";
 
 class SignupForm extends Component {
 
@@ -11,7 +12,9 @@ class SignupForm extends Component {
             email: "",
             password: "",
             password_confirmation: "",
-            timezone: ""
+            timezone: "",
+            errors: {},
+            isLoading: false,
         }
     }
 
@@ -22,7 +25,14 @@ class SignupForm extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         //axios.post('api/users', {user: this.state});
-        this.props.userSignupRequest(this.state);
+        this.setState({errors: {}, isLoading: true});
+        this.props.userSignupRequest(this.state).then(
+            ({data}) => {
+                console.log("aaaa", data)
+            },
+            (err) => this.setState({errors: err.response.data, isLoading: false})
+            //err.response.data.errors
+        );
     };
 
     render() {
@@ -31,14 +41,15 @@ class SignupForm extends Component {
             email,
             password,
             password_confirmation,
-            timezone
+            timezone,
+            errors,
+            isLoading
         } = this.state;
-
         return (
             <form onSubmit={this.onSubmit}>
 
-                <div className="form-group">
-                    <label >Username</label>
+                <div className={classnames("form-group", {'has-error': errors.username})}>
+                    <label className="control-label">Username</label>
                     <input
                         type="text"
                         name="username"
@@ -51,9 +62,11 @@ class SignupForm extends Component {
                         className="form-text text-muted">
                         We'll never share your username with anyone else.
                     </small>
+                    {errors.username && <span className="help-block">{errors.username}</span>}
                 </div>
-                <div className="form-group">
-                    <label >Email</label>
+
+                <div className={classnames("form-group", {'has-error': errors.email})}>
+                    <label className="control-label">Email</label>
                     <input
                         type="text"
                         name="email"
@@ -66,9 +79,11 @@ class SignupForm extends Component {
                         className="form-text text-muted">
                         We'll never share your email with anyone else.
                     </small>
+                    {errors.email && <span className="help-block">{errors.email}</span>}
                 </div>
-                <div className="form-group">
-                    <label >Password</label>
+
+                <div className={classnames("form-group", {'has-error': errors.password})}>
+                    <label className="control-label">Password</label>
                     <input
                         type="password"
                         name="password"
@@ -81,9 +96,11 @@ class SignupForm extends Component {
                         className="form-text text-muted">
                         We'll never share your password with anyone else.
                     </small>
+                    {errors.password && <span className="help-block">{errors.password}</span>}
                 </div>
-                <div className="form-group">
-                    <label >Password Confirmation</label>
+
+                <div className={classnames("form-group", {'has-error': errors.password_confirmation})}>
+                    <label className="control-label">Password Confirmation</label>
                     <input
                         type="password"
                         name="password_confirmation"
@@ -92,11 +109,11 @@ class SignupForm extends Component {
                         placeholder="Enter password_confirmation"
                         value={password_confirmation}
                         onChange={this.onChange}/>
-
+                    {errors.password_confirmation && <span className="help-block">{errors.password_confirmation}</span>}
                 </div>
 
-                <div className="form-group">
-                    <label >Time Zones</label>
+                <div className={classnames("form-group", {'has-error': errors.timezone})}>
+                    <label className="control-label">Time Zones</label>
                     <select
                         name="timezone"
                         className="form-control"
@@ -111,11 +128,11 @@ class SignupForm extends Component {
                             })
                         }
                     </select>
-
+                    {errors.timezone && <span className="help-block">{errors.timezone}</span>}
                 </div>
 
                 <div className="form-group">
-                    <button className="btn btn-primary btn-lg">
+                    <button className="btn btn-primary btn-lg" disabled={isLoading}>
                         Join now
                     </button>
                 </div>
@@ -123,7 +140,6 @@ class SignupForm extends Component {
         );
     }
 }
-
 
 SignupForm.propTypes = {
     userSignupRequest: PropTypes.func.isRequired

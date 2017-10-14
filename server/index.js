@@ -1,12 +1,18 @@
 import express from "express";
 import path from "path";
+import bodyParser from "body-parser";
+
 
 import webpack from "webpack";
 import webpackMiddleware from "webpack-dev-middleware";
 import webpackHotMiddleware from "webpack-hot-middleware";
 import webpackConfig from "../webpack.config.dev";
 
+import users from "./routes/users";
+
 let app = express();
+
+app.use(bodyParser.json());
 
 const compiler = webpack(webpackConfig);
 
@@ -20,6 +26,9 @@ app.use(webpackHotMiddleware(compiler));
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, './index.html'));
 });
+
+app.use('/api/users', users);
+
 
 app.listen(3000, () => {
     console.log('run server port 3000')
