@@ -101,7 +101,8 @@ class SignupForm extends Component {
                     label = "timezone confirmation"
                     onChange = {this.onChange}
                     error = {errors.timezone}
-                    options = {timezones} />
+                    options = {timezones}
+                    selected = {timezone} />
 
                 <div className = "form-group">
                     <button className = "btn btn-primary btn-lg" disabled = {isLoading}>

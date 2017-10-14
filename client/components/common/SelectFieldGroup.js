@@ -2,7 +2,7 @@ import React from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 
-const SelectFieldGroup = ({ name, onChange, options, label, error }) => {
+const SelectFieldGroup = ({ name, onChange, options, label, error ,selected}) => {
     return (
 
         <div className = {classnames("form-group", { 'has-error' : error })}>
@@ -31,8 +31,8 @@ SelectFieldGroup.propTypes = {
     label    : PropTypes.string.isRequired,
     options  : PropTypes.array.isRequired,
     onChange : PropTypes.func.isRequired,
-    error    : PropTypes.string
-
+    error    : PropTypes.string,
+    selected    : PropTypes.string
 };
 SelectFieldGroup.defaultProps = {};
 
