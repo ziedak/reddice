@@ -11,7 +11,7 @@ const SelectFieldGroup = ({ name, onChange, options, label, error, selected }) =
                 name = {name}
                 className = "form-control"
                 onChange = {onChange}>
-                <option value = "" disabled>Choose your TimeZone</option>
+                <option value = "" >Choose your TimeZone</option>
                 {
                     options.map((val) => {
                         return (

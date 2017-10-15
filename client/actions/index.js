@@ -1,7 +1,9 @@
 import userSignupRequest from "./SignupAction";
-import addFlashMessage from "./flashMessagesAction";
+import {addFlashMessage,deleteFlashMessage} from "./flashMessagesAction";
 
-export {
+
+export  {
     userSignupRequest,
-    addFlashMessage
+    addFlashMessage,
+    deleteFlashMessage
 }

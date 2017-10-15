@@ -45,7 +45,8 @@ class SignupForm extends Component {
                     this.props.addFlashMessage({
                         type : 'success',
                         text : 'You signed up successfully, welcome'
-                    })
+                    });
+
                     this.context.router.push('/'); //redirection
                 },
                 (err) => this.setState({ errors : err.response.data, isLoading : false })
@@ -126,7 +127,7 @@ SignupForm.propTypes = {
 
 SignupForm.contextTypes = {
     router : PropTypes.object.isRequired
-}
+};
 export default SignupForm;
 
 
