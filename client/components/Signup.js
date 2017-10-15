@@ -7,13 +7,13 @@ import PropTypes from "prop-types";
 
 class Signup extends Component {
     render() {
-        const { userSignupRequest,addFlashMessage } = this.props;
+        const { userSignupRequest, addFlashMessage } = this.props;
         return (
             <div className = "row">
                 <div className = "col-md-4 col-md-offset-4">
                     <SignupForm
                         userSignupRequest = {userSignupRequest}
-                        addFlashMessage={addFlashMessage}
+                        addFlashMessage = {addFlashMessage}
                     />
                 </div>
             </div>
