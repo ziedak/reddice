@@ -2,7 +2,7 @@ import Validator from "validator";
 import isEmpty from "lodash/isEmpty";
 
 
-export default function validateInput(data) {
+export default function commonValidation(data) {
     let errors = {};
     if ( Validator.isEmpty(data.username) ) {
         errors.username = 'this username is empty';
@@ -10,7 +10,7 @@ export default function validateInput(data) {
     if ( Validator.isEmpty(data.email) ) {
         errors.email = 'this email is empty';
     }
-    if ( Validator.isEmail(data.email) ) {
+    if ( !Validator.isEmail(data.email) ) {
         errors.email = 'this email is not valid';
     }
     if ( Validator.isEmpty(data.password) ) {
