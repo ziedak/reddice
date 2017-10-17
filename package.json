@@ -33,6 +33,7 @@
     "classnames": "^2.2.5",
     "express": "^4.16.1",
     "history": "^4.7.2",
+    "jsonwebtoken": "^8.1.0",
     "knex": "^0.13.0",
     "lodash": "^4.17.4",
     "pg": "^7.3.0",

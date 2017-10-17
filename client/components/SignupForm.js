@@ -48,6 +48,7 @@ class SignupForm extends Component {
                     valid = false
                 } else {
                     errors[ field ] = '';
+                    valid = true;
                 }
                 this.setState({ errors, isInValid : valid });
             });
@@ -132,7 +133,7 @@ class SignupForm extends Component {
                     selected = {timezone} />
 
                 <div className = "form-group">
-                    <button className = "btn btn-primary btn-lg" disabled = {isLoading || isInValid}>
+                    <button className = "btn btn-primary btn-lg" disabled = {isLoading || !isInValid}>
                         Join now
                     </button>
                 </div>

@@ -10,11 +10,11 @@ class LoginFormForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            identifier  : "",
-            password  : "",
-            errors    : {},
-            isLoading : false,
-            isInValid : false
+            identifier : "",
+            password   : "",
+            errors     : {},
+            isLoading  : false,
+            isInValid  : false
         }
     }
 
@@ -45,7 +45,7 @@ class LoginFormForm extends Component {
 
                     this.context.router.push('/'); //redirection
                 },
-                (err) => this.setState({ errors : err.response.data, isLoading : false })
+                (err) => this.setState({ errors : err.response.data.errors, isLoading : false })
                 //err.response.data.errors
             );
         }
@@ -59,10 +59,10 @@ class LoginFormForm extends Component {
                   errors,
                   isLoading
               } = this.state;
-
+console.log(this.state);
         return (
             <form onSubmit = {this.onSubmit}>
-
+                {errors.form && <div className = "alert alert-danger">{errors.form}</div> }
                 <TextFieldGroup
                     name = "identifier"
                     label = "username / Email"
@@ -95,7 +95,7 @@ class LoginFormForm extends Component {
 LoginFormForm.propTypes = {
 
     addFlashMessage : PropTypes.func.isRequired,
-    login     : PropTypes.func.isRequired
+    login           : PropTypes.func.isRequired
 };
 
 
