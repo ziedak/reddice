@@ -51,8 +51,22 @@ function validateInput(data, otherValidations) {
 
 }
 
-router.post('/', (req, res) => {
 
+router.get('/:identifier', (req, res) => {
+    res.json({ req });
+    console.log('identifier:', req.params.id)
+/*
+    User.query({
+        select  : [ 'username', 'email' ],
+        where   : { email : req.params.identifier },
+        orWhere : { username : req.params.identifier }
+    }).fetch().then(user => {
+        res.json({ user });
+    });*/
+});
+
+router.post('/', (req, res) => {
+    console.log('identifier:')
     validateInput(req.body, commonValidation).then(({ errors, isValid }) => {
         if ( isValid ) {
             //insert user in BD

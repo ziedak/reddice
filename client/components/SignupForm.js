@@ -18,6 +18,7 @@ class SignupForm extends Component {
             timezone              : "",
             errors                : {},
             isLoading             : false,
+            isInValid             : false
         }
     }
 
@@ -34,6 +35,23 @@ class SignupForm extends Component {
     onChange = (e) => {
         this.setState({ [e.target.name] : e.target.value });
         //this.setState({username: e.target.value})
+    };
+    checkUserExist = (e) => {
+        const field = e.target.name;
+        const val = e.target.value;
+        if ( val !== '' ) {
+            this.props.isUserExist(val).then(res => {
+                let { errors } = this.state;
+                let valid = true;
+                if ( res.data.user ) {
+                    errors[ field ] = 'there is user with such ' + field;
+                    valid = false
+                } else {
+                    errors[ field ] = '';
+                }
+                this.setState({ errors, isInValid : valid });
+            });
+        }
     };
     onSubmit = (e) => {
         e.preventDefault();
@@ -64,7 +82,8 @@ class SignupForm extends Component {
                   password_confirmation,
                   timezone,
                   errors,
-                  isLoading
+                  isLoading,
+                  isInValid
               } = this.state;
         return (
             <form onSubmit = {this.onSubmit}>
@@ -75,7 +94,9 @@ class SignupForm extends Component {
                     placeholder = "Enter Username"
                     value = {username}
                     onChange = {this.onChange}
-                    error = {errors.username} />
+                    error = {errors.username}
+                    onBlur = {this.checkUserExist}
+                />
 
                 <TextFieldGroup
                     name = "email"
@@ -83,7 +104,9 @@ class SignupForm extends Component {
                     placeholder = "Enter email"
                     value = {email}
                     onChange = {this.onChange}
-                    error = {errors.email} />
+                    error = {errors.email}
+                    onBlur = {this.checkUserExist}
+                />
                 <TextFieldGroup
                     name = "password"
                     label = "password"
@@ -109,7 +132,7 @@ class SignupForm extends Component {
                     selected = {timezone} />
 
                 <div className = "form-group">
-                    <button className = "btn btn-primary btn-lg" disabled = {isLoading}>
+                    <button className = "btn btn-primary btn-lg" disabled = {isLoading || isInValid}>
                         Join now
                     </button>
                 </div>
@@ -120,8 +143,8 @@ class SignupForm extends Component {
 
 SignupForm.propTypes = {
     userSignupRequest : PropTypes.func.isRequired,
-    addFlashMessage   : PropTypes.func.isRequired
-
+    addFlashMessage   : PropTypes.func.isRequired,
+    isUserExist       : PropTypes.func.isRequired
 };
 
 
