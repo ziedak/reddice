@@ -1,10 +1,12 @@
-import {userSignupRequest,isUserExist} from "./SignupAction";
-import {addFlashMessage,deleteFlashMessage} from "./flashMessagesAction";
+import { isUserExist, userSignupRequest } from "./SignupAction";
+import { login } from "./loginAction";
+import { addFlashMessage, deleteFlashMessage } from "./flashMessagesAction";
 
 
 export  {
     userSignupRequest,
     isUserExist,
+    login,
     addFlashMessage,
     deleteFlashMessage
 }
