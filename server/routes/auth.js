@@ -6,8 +6,8 @@ import config from "../config";
 
 //import Promise from "bluebird";
 
-
 let router = express.Router();
+
 router.post('/', (req, res) => {
 
     const { identifier, password } = req.body;

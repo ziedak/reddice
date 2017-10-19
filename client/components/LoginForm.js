@@ -59,7 +59,7 @@ class LoginFormForm extends Component {
                   errors,
                   isLoading
               } = this.state;
-console.log(this.state);
+
         return (
             <form onSubmit = {this.onSubmit}>
                 {errors.form && <div className = "alert alert-danger">{errors.form}</div> }
