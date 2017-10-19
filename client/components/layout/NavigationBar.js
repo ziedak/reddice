@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { logout } from "../actions/AuthAction";
+import { logout } from "../../actions/AuthAction";
 
 class NavigationBar extends Component {
     constructor(props) {

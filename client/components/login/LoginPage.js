@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import LoginForm from "./LoginForm";
 
 
-class Login extends Component {
+class LoginPage extends Component {
     render() {
         return (
             <div className = "row">
@@ -14,6 +14,6 @@ class Login extends Component {
     }
 }
 
-Login.propTypes = {};
-export default Login;
+LoginPage.propTypes = {};
+export default LoginPage;
 

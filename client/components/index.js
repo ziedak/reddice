@@ -1,11 +1,13 @@
 import App from "./App";
-import Greetings from "./Greetings";
-import Signup from "./Signup";
-import Login from "./Login";
+import GreetingsPage from "./layout/GreetingsPage";
+import SignupPage from "./signup/SignupPage";
+import LoginPage from "./login/LoginPage";
+import NewEventPage from "./events/NewEventPage";
 
 export {
     App,
-    Greetings,
-    Signup,
-    Login
+    GreetingsPage,
+    SignupPage,
+    LoginPage,
+    NewEventPage
 }

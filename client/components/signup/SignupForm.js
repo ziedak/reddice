@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { SelectFieldGroup, TextFieldGroup } from "./common";
-import validateInput from "../../server/shared/validation/singupValidation";
-import timezones from "../data/timezones";
+import { SelectFieldGroup, TextFieldGroup } from "../common/index";
+import validateInput from "../../../server/shared/validation/singupValidation";
+import timezones from "../../data/timezones";
 //import { browserHistory } from "react-router";
 
 

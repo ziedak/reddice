@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 
-class Greetings extends Component {
+class GreetingsPage extends Component {
     render() {
         return (
             <div className = "jumbotron">hi greetings</div>
@@ -10,5 +10,5 @@ class Greetings extends Component {
 }
 
 
-export default Greetings;
+export default GreetingsPage;
 

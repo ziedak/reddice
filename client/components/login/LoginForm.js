@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { TextFieldGroup } from "./common";
-import validateInput from "../../server/shared/validation/LoginValidation";
+import { TextFieldGroup } from "../common";
+import validateInput from "../../../server/shared/validation/LoginValidation";
 import { connect } from "react-redux";
-import { addFlashMessage, login } from "../actions";
+import { addFlashMessage, login } from "../../actions";
 
 class LoginFormForm extends Component {
 

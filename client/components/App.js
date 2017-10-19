@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import NavigationBar from "./NavigationBar";
+import NavigationBar from "./layout/NavigationBar";
 import FlashMessagesList from "./flash/FlashMessagesList";
 
 export default class App extends Component {

@@ -1,5 +1,6 @@
 import { isUserExist, userSignupRequest } from "./SignupAction";
 import { login } from "./AuthAction";
+import { createEvent } from "./EventAction";
 import { addFlashMessage, deleteFlashMessage } from "./flashMessagesAction";
 
 
@@ -8,5 +9,6 @@ export  {
     isUserExist,
     login,
     addFlashMessage,
-    deleteFlashMessage
+    deleteFlashMessage,
+    createEvent
 }
